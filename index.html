@@ -37,15 +37,31 @@
         .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent-green) 0%, #059669 100%); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px; }
         .logo-text h1 { font-size: 24px; font-weight: 700; }
         .logo-text span { font-size: 13px; color: var(--text-muted); }
-        .btn { padding: 10px 20px; border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; border: none; display: flex; align-items: center; gap: 8px; }
+        .btn { padding: 10px 20px; border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; border: none; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
         .btn-primary { background: linear-gradient(135deg, var(--accent-green) 0%, #059669 100%); color: white; }
+        .btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
         .main-container { max-width: 1600px; margin: 0 auto; padding: 24px 32px; }
         .config-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; }
         .config-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
-        .config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
         .config-item { display: flex; flex-direction: column; gap: 6px; }
         .config-item label { font-size: 13px; color: var(--text-secondary); }
         .config-item input, .config-item select { padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: inherit; font-size: 14px; }
+        .config-item input[type="date"] { cursor: pointer; }
+        .filter-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; }
+        .filter-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+        .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; align-items: end; }
+        .filter-buttons { display: flex; gap: 8px; }
+        .date-summary { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; }
+        .date-summary h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .summary-item { background: var(--bg-secondary); border-radius: var(--radius-sm); padding: 16px; text-align: center; }
+        .summary-item .value { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+        .summary-item .label { font-size: 13px; color: var(--text-secondary); }
+        .summary-item.income .value { color: var(--accent-green); }
+        .summary-item.expense .value { color: var(--accent-red); }
+        .summary-item.balance .value { color: var(--accent-blue); }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
         .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 20px 24px; }
         .stat-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
@@ -65,10 +81,16 @@
         .category-name { font-size: 14px; font-weight: 500; }
         .category-amount { font-size: 16px; font-weight: 600; }
         .table-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow: hidden; }
-        .table-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); font-size: 16px; font-weight: 600; }
-        table { width: 100%; border-collapse: collapse; }
-        th { padding: 14px 16px; text-align: right; font-size: 12px; font-weight: 600; color: var(--text-secondary); background: var(--bg-secondary); }
+        .table-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .table-header h3 { font-size: 16px; font-weight: 600; }
+        .table-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .table-controls select { padding: 8px 12px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: inherit; font-size: 13px; }
+        .table-controls label { font-size: 13px; color: var(--text-secondary); }
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        th { padding: 14px 16px; text-align: right; font-size: 12px; font-weight: 600; color: var(--text-secondary); background: var(--bg-secondary); position: sticky; top: 0; }
         td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid var(--border-color); }
+        tr:hover { background: var(--bg-secondary); }
         .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
         .status-badge.completed { background: var(--accent-green-soft); color: var(--accent-green); }
         .status-badge.pending { background: var(--accent-yellow-soft); color: var(--accent-yellow); }
@@ -80,7 +102,18 @@
         .loading { text-align: center; padding: 40px; color: var(--text-muted); }
         .error-msg { background: var(--accent-red-soft); color: var(--accent-red); padding: 16px; border-radius: var(--radius-sm); margin-bottom: 24px; text-align: center; }
         .success-msg { background: var(--accent-green-soft); color: var(--accent-green); padding: 16px; border-radius: var(--radius-sm); margin-bottom: 24px; text-align: center; }
-        @media (max-width: 768px) { .main-container { padding: 16px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .charts-grid { grid-template-columns: 1fr; } }
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; padding: 20px; border-top: 1px solid var(--border-color); flex-wrap: wrap; }
+        .pagination button { padding: 8px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: inherit; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+        .pagination button:hover:not(:disabled) { background: var(--bg-card); }
+        .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .pagination button.active { background: var(--accent-green); border-color: var(--accent-green); }
+        .pagination-info { font-size: 13px; color: var(--text-secondary); margin: 0 16px; }
+        @media (max-width: 768px) { 
+            .main-container { padding: 16px; } 
+            .stats-grid { grid-template-columns: repeat(2, 1fr); } 
+            .charts-grid { grid-template-columns: 1fr; }
+            .filter-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -125,29 +158,106 @@
                 </div>
             </div>
         </div>
+
+        <div class="filter-section">
+            <h3>📅 סינון לפי תאריכים</h3>
+            <div class="filter-grid">
+                <div class="config-item">
+                    <label>מתאריך</label>
+                    <input type="date" id="dateFrom" onchange="applyFilters()" />
+                </div>
+                <div class="config-item">
+                    <label>עד תאריך</label>
+                    <input type="date" id="dateTo" onchange="applyFilters()" />
+                </div>
+                <div class="config-item">
+                    <label>סוג תנועה</label>
+                    <select id="typeFilter" onchange="applyFilters()">
+                        <option value="all">הכל</option>
+                        <option value="expense">הוצאות בלבד</option>
+                        <option value="income">הכנסות בלבד</option>
+                    </select>
+                </div>
+                <div class="config-item">
+                    <label>סטטוס</label>
+                    <select id="statusFilter" onchange="applyFilters()">
+                        <option value="all">הכל</option>
+                        <option value="completed">בוצע בלבד</option>
+                        <option value="pending">ממתין בלבד</option>
+                    </select>
+                </div>
+                <div class="config-item filter-buttons">
+                    <button class="btn btn-secondary" onclick="clearFilters()">🗑️ נקה סינון</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="date-summary">
+            <h3>📊 סיכום לפי סינון</h3>
+            <div class="summary-grid">
+                <div class="summary-item income">
+                    <div class="value" id="filteredIncome">₪0</div>
+                    <div class="label">סה"כ הכנסות בטווח</div>
+                </div>
+                <div class="summary-item expense">
+                    <div class="value" id="filteredExpense">₪0</div>
+                    <div class="label">סה"כ הוצאות בטווח</div>
+                </div>
+                <div class="summary-item balance">
+                    <div class="value" id="filteredBalance">₪0</div>
+                    <div class="label">הפרש (הכנסות - הוצאות)</div>
+                </div>
+                <div class="summary-item">
+                    <div class="value" id="filteredCount">0</div>
+                    <div class="label">מספר תנועות</div>
+                </div>
+            </div>
+        </div>
+
         <div id="statusMsg" style="display:none;"></div>
+        
         <div class="stats-grid">
-            <div class="stat-card blue"><div class="stat-icon">💵</div><div class="stat-value" id="currentBalance">₪0</div><div class="stat-label">יתרה נוכחית</div></div>
-            <div class="stat-card green"><div class="stat-icon">📈</div><div class="stat-value" id="totalIncome">₪0</div><div class="stat-label">סה"כ הכנסות</div></div>
-            <div class="stat-card red"><div class="stat-icon">📉</div><div class="stat-value" id="totalExpenses">₪0</div><div class="stat-label">סה"כ הוצאות</div></div>
+            <div class="stat-card blue"><div class="stat-icon">💵</div><div class="stat-value" id="currentBalance">₪0</div><div class="stat-label">יתרה נוכחית (כל החודש)</div></div>
+            <div class="stat-card green"><div class="stat-icon">📈</div><div class="stat-value" id="totalIncome">₪0</div><div class="stat-label">סה"כ הכנסות (כל החודש)</div></div>
+            <div class="stat-card red"><div class="stat-icon">📉</div><div class="stat-value" id="totalExpenses">₪0</div><div class="stat-label">סה"כ הוצאות (כל החודש)</div></div>
             <div class="stat-card purple"><div class="stat-icon">📊</div><div class="stat-value" id="netFlow">₪0</div><div class="stat-label">רווח/הפסד תזרימי</div></div>
         </div>
+
         <div class="charts-grid">
             <div class="chart-card"><div class="chart-title">התפלגות הוצאות לפי קטגוריה</div><div class="chart-container"><canvas id="categoryChart"></canvas></div></div>
             <div class="chart-card"><div class="chart-title">הכנסות מול הוצאות</div><div class="chart-container"><canvas id="incomeExpenseChart"></canvas></div></div>
         </div>
+
         <div class="category-section"><div class="category-title">התפלגות הוצאות לפי קטגוריה</div><div id="categoryList"></div></div>
+
         <div class="table-section">
-            <div class="table-header">כל התנועות</div>
-            <table>
-                <thead><tr><th>תאריך</th><th>סוג</th><th>קטגוריה</th><th>תת-קטגוריה</th><th>ספק</th><th>סכום</th><th>מס' צ'ק</th><th>סטטוס</th><th>הערות</th></tr></thead>
-                <tbody id="transactionsBody"><tr><td colspan="9" class="loading">טוען נתונים...</td></tr></tbody>
-            </table>
+            <div class="table-header">
+                <h3>כל התנועות (<span id="totalCount">0</span>)</h3>
+                <div class="table-controls">
+                    <label>הצג:</label>
+                    <select id="rowsPerPage" onchange="updateTable()">
+                        <option value="20">20 שורות</option>
+                        <option value="50">50 שורות</option>
+                        <option value="100">100 שורות</option>
+                        <option value="all">הכל</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>תאריך</th><th>סוג</th><th>קטגוריה</th><th>תת-קטגוריה</th><th>ספק</th><th>סכום</th><th>מס' צ'ק</th><th>סטטוס</th><th>הערות</th></tr></thead>
+                    <tbody id="transactionsBody"><tr><td colspan="9" class="loading">טוען נתונים...</td></tr></tbody>
+                </table>
+            </div>
+            <div class="pagination" id="pagination"></div>
         </div>
     </div>
+
     <script>
         const SHEET_ID = '1JTTGR7W_VG1q25jbZNXQ3X3DW97rUJJAPduyeuu7DLw';
         let allTransactions = [];
+        let filteredTransactions = [];
+        let currentPage = 1;
         let charts = {};
 
         async function loadData() {
@@ -155,50 +265,171 @@
             const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(month)}`;
             document.getElementById('transactionsBody').innerHTML = '<tr><td colspan="9" class="loading">טוען נתונים...</td></tr>';
             hideStatus();
+            
             try {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Failed to fetch');
                 const csvText = await response.text();
                 const transactions = parseCSV(csvText);
-                if (transactions.length === 0) { showStatus('לא נמצאו נתונים בגיליון ' + month, 'error'); allTransactions = []; updateStats(); updateCharts(); updateCategoryList(); updateTable(); return; }
+                
+                if (transactions.length === 0) {
+                    showStatus('לא נמצאו נתונים בגיליון ' + month, 'error');
+                    allTransactions = [];
+                    filteredTransactions = [];
+                    updateAll();
+                    return;
+                }
+                
                 allTransactions = transactions;
-                updateStats(); updateCharts(); updateCategoryList(); updateTable();
+                setDefaultDates();
+                applyFilters();
                 showStatus('נטענו ' + transactions.length + ' תנועות בהצלחה!', 'success');
-            } catch (error) { console.error('Error:', error); showStatus('שגיאה בטעינת הנתונים. וודא שהגיליון משותף לכולם.', 'error'); }
+            } catch (error) {
+                console.error('Error:', error);
+                showStatus('שגיאה בטעינת הנתונים. וודא שהגיליון משותף לכולם.', 'error');
+            }
         }
 
-        function showStatus(msg, type) { const el = document.getElementById('statusMsg'); el.textContent = msg; el.className = type === 'error' ? 'error-msg' : 'success-msg'; el.style.display = 'block'; if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 3000); }
+        function setDefaultDates() {
+            if (allTransactions.length === 0) return;
+            const dates = allTransactions.map(t => new Date(t.date)).filter(d => !isNaN(d));
+            if (dates.length === 0) return;
+            const minDate = new Date(Math.min(...dates));
+            const maxDate = new Date(Math.max(...dates));
+            document.getElementById('dateFrom').value = minDate.toISOString().split('T')[0];
+            document.getElementById('dateTo').value = maxDate.toISOString().split('T')[0];
+        }
+
+        function clearFilters() {
+            document.getElementById('typeFilter').value = 'all';
+            document.getElementById('statusFilter').value = 'all';
+            setDefaultDates();
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            filteredTransactions = allTransactions.filter(t => {
+                const tDate = new Date(t.date);
+                if (dateFrom && tDate < new Date(dateFrom)) return false;
+                if (dateTo && tDate > new Date(dateTo + 'T23:59:59')) return false;
+                if (typeFilter !== 'all' && t.type !== typeFilter) return false;
+                if (statusFilter !== 'all' && t.status !== statusFilter) return false;
+                return true;
+            });
+
+            currentPage = 1;
+            updateAll();
+        }
+
+        function updateAll() {
+            updateStats();
+            updateFilteredSummary();
+            updateCharts();
+            updateCategoryList();
+            updateTable();
+        }
+
+        function updateFilteredSummary() {
+            const income = filteredTransactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
+            const expense = filteredTransactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
+            const balance = income - expense;
+
+            document.getElementById('filteredIncome').textContent = formatCurrency(income);
+            document.getElementById('filteredExpense').textContent = formatCurrency(expense);
+            document.getElementById('filteredBalance').textContent = formatCurrency(balance);
+            document.getElementById('filteredBalance').style.color = balance >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+            document.getElementById('filteredCount').textContent = filteredTransactions.length;
+        }
+
+        function showStatus(msg, type) {
+            const el = document.getElementById('statusMsg');
+            el.textContent = msg;
+            el.className = type === 'error' ? 'error-msg' : 'success-msg';
+            el.style.display = 'block';
+            if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 3000);
+        }
+
         function hideStatus() { document.getElementById('statusMsg').style.display = 'none'; }
 
         function parseCSV(csvText) {
             const lines = csvText.split('\n').filter(line => line.trim());
             const transactions = [];
             let headerIndex = -1;
-            for (let i = 0; i < Math.min(5, lines.length); i++) { if (lines[i].includes('תאריך') && lines[i].includes('סכום')) { headerIndex = i; break; } }
+            
+            for (let i = 0; i < Math.min(5, lines.length); i++) {
+                if (lines[i].includes('תאריך') && lines[i].includes('סכום')) {
+                    headerIndex = i;
+                    break;
+                }
+            }
+            
             if (headerIndex === -1) return [];
+            
             const headers = parseCSVLine(lines[headerIndex]);
             const headerMap = {};
             headers.forEach((h, i) => { headerMap[h.trim().replace(/"/g, '')] = i; });
+            
             for (let i = headerIndex + 1; i < lines.length; i++) {
                 const values = parseCSVLine(lines[i]);
                 if (values.length < 3) continue;
-                const getValue = (key) => { const idx = headerMap[key]; return idx !== undefined ? (values[idx] || '').trim().replace(/"/g, '') : ''; };
+                
+                const getValue = (key) => {
+                    const idx = headerMap[key];
+                    return idx !== undefined ? (values[idx] || '').trim().replace(/"/g, '') : '';
+                };
+                
                 const dateStr = getValue('תאריך');
                 if (!dateStr) continue;
+                
                 let date = dateStr;
-                if (dateStr.includes('/')) { const parts = dateStr.split('/'); if (parts.length === 3) date = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`; }
+                if (dateStr.includes('/')) {
+                    const parts = dateStr.split('/');
+                    if (parts.length === 3) {
+                        date = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+                    }
+                }
+                
                 const typeVal = getValue('סוג');
                 const type = typeVal.includes('הכנסה') ? 'income' : 'expense';
                 const statusVal = getValue('סטטוס');
                 const status = statusVal.includes('בוצע') ? 'completed' : 'pending';
                 const amountStr = getValue('סכום').replace(/[₪,\s]/g, '');
                 const amount = parseFloat(amountStr) || 0;
-                transactions.push({ date, type, category: getValue('קטגוריה') || 'אחר', subcategory: getValue('תת_קטגוריה') || 'אחר', supplier: getValue('ספק') || '', amount, checkNum: getValue('מס_צק') || '', status, notes: getValue('הערות') || '' });
+                
+                transactions.push({
+                    date,
+                    type,
+                    category: getValue('קטגוריה') || 'אחר',
+                    subcategory: getValue('תת_קטגוריה') || 'אחר',
+                    supplier: getValue('ספק') || '',
+                    amount,
+                    checkNum: getValue('מס_צק') || '',
+                    status,
+                    notes: getValue('הערות') || ''
+                });
             }
+            
             return transactions;
         }
 
-        function parseCSVLine(line) { const result = []; let current = ''; let inQuotes = false; for (let i = 0; i < line.length; i++) { const char = line[i]; if (char === '"') inQuotes = !inQuotes; else if (char === ',' && !inQuotes) { result.push(current); current = ''; } else current += char; } result.push(current); return result; }
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') inQuotes = !inQuotes;
+                else if (char === ',' && !inQuotes) { result.push(current); current = ''; }
+                else current += char;
+            }
+            result.push(current);
+            return result;
+        }
 
         function updateStats() {
             const openingBalance = parseFloat(document.getElementById('openingBalance').value) || 0;
@@ -207,6 +438,7 @@
             const totalExpenses = completed.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
             const currentBalance = openingBalance + totalIncome - totalExpenses;
             const netFlow = totalIncome - totalExpenses;
+            
             document.getElementById('currentBalance').textContent = formatCurrency(currentBalance);
             document.getElementById('totalIncome').textContent = formatCurrency(totalIncome);
             document.getElementById('totalExpenses').textContent = formatCurrency(totalExpenses);
@@ -216,31 +448,94 @@
 
         function updateCharts() {
             const expensesByCategory = {};
-            allTransactions.filter(t => t.type === 'expense').forEach(t => { expensesByCategory[t.category] = (expensesByCategory[t.category] || 0) + t.amount; });
+            filteredTransactions.filter(t => t.type === 'expense').forEach(t => {
+                expensesByCategory[t.category] = (expensesByCategory[t.category] || 0) + t.amount;
+            });
+            
             const labels = Object.keys(expensesByCategory);
             const data = Object.values(expensesByCategory);
-            const colors = ['#ef4444', '#f97316', '#8b5cf6', '#3b82f6', '#ec4899', '#10b981', '#f59e0b'];
+            const colors = ['#ef4444', '#f97316', '#8b5cf6', '#3b82f6', '#ec4899', '#10b981', '#f59e0b', '#6366f1', '#14b8a6', '#f43f5e'];
+            
             if (charts.category) charts.category.destroy();
-            charts.category = new Chart(document.getElementById('categoryChart'), { type: 'doughnut', data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#94a3b8' } } } } });
-            const totalIncome = allTransactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
-            const totalExpenses = allTransactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
+            charts.category = new Chart(document.getElementById('categoryChart'), {
+                type: 'doughnut',
+                data: { labels, datasets: [{ data, backgroundColor: colors.slice(0, labels.length), borderWidth: 0 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#94a3b8' } } } }
+            });
+            
+            const totalIncome = filteredTransactions.filter(t => t.type === 'income').reduce((sum, t) => sum + t.amount, 0);
+            const totalExpenses = filteredTransactions.filter(t => t.type === 'expense').reduce((sum, t) => sum + t.amount, 0);
+            
             if (charts.incomeExpense) charts.incomeExpense.destroy();
-            charts.incomeExpense = new Chart(document.getElementById('incomeExpenseChart'), { type: 'bar', data: { labels: ['הכנסות', 'הוצאות'], datasets: [{ data: [totalIncome, totalExpenses], backgroundColor: ['rgba(16, 185, 129, 0.8)', 'rgba(239, 68, 68, 0.8)'], borderRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } }, x: { grid: { display: false }, ticks: { color: '#64748b' } } } } });
+            charts.incomeExpense = new Chart(document.getElementById('incomeExpenseChart'), {
+                type: 'bar',
+                data: { labels: ['הכנסות', 'הוצאות'], datasets: [{ data: [totalIncome, totalExpenses], backgroundColor: ['rgba(16, 185, 129, 0.8)', 'rgba(239, 68, 68, 0.8)'], borderRadius: 6 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } }, x: { grid: { display: false }, ticks: { color: '#64748b' } } } }
+            });
         }
 
         function updateCategoryList() {
             const expensesByCategory = {};
-            allTransactions.filter(t => t.type === 'expense').forEach(t => { expensesByCategory[t.category] = (expensesByCategory[t.category] || 0) + t.amount; });
+            filteredTransactions.filter(t => t.type === 'expense').forEach(t => {
+                expensesByCategory[t.category] = (expensesByCategory[t.category] || 0) + t.amount;
+            });
             const sorted = Object.entries(expensesByCategory).sort((a, b) => b[1] - a[1]);
-            document.getElementById('categoryList').innerHTML = sorted.length > 0 ? sorted.map(([cat, amount]) => `<div class="category-item"><span class="category-name">${cat}</span><span class="category-amount" style="color: var(--accent-red)">${formatCurrency(amount)}</span></div>`).join('') : '<div class="loading">אין נתונים</div>';
+            document.getElementById('categoryList').innerHTML = sorted.length > 0 
+                ? sorted.map(([cat, amount]) => `<div class="category-item"><span class="category-name">${cat}</span><span class="category-amount" style="color: var(--accent-red)">${formatCurrency(amount)}</span></div>`).join('')
+                : '<div class="loading">אין נתונים</div>';
         }
 
         function updateTable() {
             const tbody = document.getElementById('transactionsBody');
-            if (allTransactions.length === 0) { tbody.innerHTML = '<tr><td colspan="9" class="loading">אין נתונים להצגה</td></tr>'; return; }
-            tbody.innerHTML = allTransactions.map(t => `<tr><td>${formatDate(t.date)}</td><td><span class="type-badge ${t.type}">${t.type === 'income' ? '📈 הכנסה' : '📉 הוצאה'}</span></td><td>${t.category}</td><td>${t.subcategory}</td><td>${t.supplier}</td><td class="amount-cell ${t.type}">${formatCurrency(t.amount)}</td><td>${t.checkNum || '-'}</td><td><span class="status-badge ${t.status}">${t.status === 'completed' ? '✅ בוצע' : '⏳ ממתין'}</span></td><td>${t.notes || '-'}</td></tr>`).join('');
+            const rowsPerPageSelect = document.getElementById('rowsPerPage').value;
+            const rowsPerPage = rowsPerPageSelect === 'all' ? filteredTransactions.length : parseInt(rowsPerPageSelect);
+            const totalPages = Math.ceil(filteredTransactions.length / rowsPerPage) || 1;
+            
+            if (currentPage > totalPages) currentPage = totalPages;
+            
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const endIndex = Math.min(startIndex + rowsPerPage, filteredTransactions.length);
+            const pageTransactions = filteredTransactions.slice(startIndex, endIndex);
+            
+            document.getElementById('totalCount').textContent = filteredTransactions.length;
+            
+            if (pageTransactions.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" class="loading">אין נתונים להצגה</td></tr>';
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+            
+            tbody.innerHTML = pageTransactions.map(t => `
+                <tr>
+                    <td>${formatDate(t.date)}</td>
+                    <td><span class="type-badge ${t.type}">${t.type === 'income' ? '📈 הכנסה' : '📉 הוצאה'}</span></td>
+                    <td>${t.category}</td>
+                    <td>${t.subcategory}</td>
+                    <td>${t.supplier}</td>
+                    <td class="amount-cell ${t.type}">${formatCurrency(t.amount)}</td>
+                    <td>${t.checkNum || '-'}</td>
+                    <td><span class="status-badge ${t.status}">${t.status === 'completed' ? '✅ בוצע' : '⏳ ממתין'}</span></td>
+                    <td>${t.notes || '-'}</td>
+                </tr>
+            `).join('');
+            
+            updatePagination(totalPages);
         }
 
+        function updatePagination(totalPages) {
+            const pagination = document.getElementById('pagination');
+            if (totalPages <= 1) { pagination.innerHTML = ''; return; }
+            
+            let html = `<button onclick="goToPage(1)" ${currentPage === 1 ? 'disabled' : ''}>⏮️ ראשון</button>`;
+            html += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>◀️ הקודם</button>`;
+            html += `<span class="pagination-info">עמוד ${currentPage} מתוך ${totalPages}</span>`;
+            html += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>הבא ▶️</button>`;
+            html += `<button onclick="goToPage(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}>אחרון ⏭️</button>`;
+            
+            pagination.innerHTML = html;
+        }
+
+        function goToPage(page) { currentPage = page; updateTable(); }
         function formatCurrency(amount) { return '₪' + Math.abs(amount).toLocaleString('he-IL'); }
         function formatDate(dateStr) { if (!dateStr) return '-'; const date = new Date(dateStr); return date.toLocaleDateString('he-IL'); }
 
